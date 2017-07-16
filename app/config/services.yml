@@ -10,3 +10,5 @@ services:
     app.populatedb:
         class: AppBundle\Service\DBPopulater
         arguments: [@doctrine.orm.entity_manager]
+    app.token_authenticator:
+        class: AppBundle\Security\TokenAuthenticator
