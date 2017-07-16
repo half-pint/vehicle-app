@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehicletrim</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vehicleTrim.id }}</td>
+            </tr>
+            <tr>
+                <th>Vehiclemodelid</th>
+                <td>{{ vehicleTrim.vehicleModelId }}</td>
+            </tr>
+            <tr>
+                <th>Vehicletype</th>
+                <td>{{ vehicleTrim.vehicleType }}</td>
+            </tr>
+            <tr>
+                <th>Vehicletransmission</th>
+                <td>{{ vehicleTrim.vehicleTransmission }}</td>
+            </tr>
+            <tr>
+                <th>Weightcategory</th>
+                <td>{{ vehicleTrim.weightCategory }}</td>
+            </tr>
+            <tr>
+                <th>Totalseats</th>
+                <td>{{ vehicleTrim.totalSeats }}</td>
+            </tr>
+            <tr>
+                <th>Hasboot</th>
+                <td>{% if vehicleTrim.hasBoot %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ishgv</th>
+                <td>{% if vehicleTrim.isHgv %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hassunroof</th>
+                <td>{% if vehicleTrim.hasSunroof %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hasgps</th>
+                <td>{% if vehicleTrim.hasGps %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Totalwheels</th>
+                <td>{{ vehicleTrim.totalWheels }}</td>
+            </tr>
+            <tr>
+                <th>Enginecapacity</th>
+                <td>{{ vehicleTrim.engineCapacity }}</td>
+            </tr>
+            <tr>
+                <th>Totaldoors</th>
+                <td>{{ vehicleTrim.totalDoors }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehicletrim_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('vehicletrim_edit', { 'id': vehicleTrim.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

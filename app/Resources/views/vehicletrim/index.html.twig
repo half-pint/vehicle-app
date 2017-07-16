@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehicletrims list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Vehiclemodelid</th>
+                <th>Vehicletype</th>
+                <th>Vehicletransmission</th>
+                <th>Weightcategory</th>
+                <th>Totalseats</th>
+                <th>Hasboot</th>
+                <th>Ishgv</th>
+                <th>Hassunroof</th>
+                <th>Hasgps</th>
+                <th>Totalwheels</th>
+                <th>Enginecapacity</th>
+                <th>Totaldoors</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vehicleTrim in vehicleTrims %}
+            <tr>
+                <td><a href="{{ path('vehicletrim_show', { 'id': vehicleTrim.id }) }}">{{ vehicleTrim.id }}</a></td>
+                <td>{{ vehicleTrim.vehicleModelId }}</td>
+                <td>{{ vehicleTrim.vehicleType }}</td>
+                <td>{{ vehicleTrim.vehicleTransmission }}</td>
+                <td>{{ vehicleTrim.weightCategory }}</td>
+                <td>{{ vehicleTrim.totalSeats }}</td>
+                <td>{% if vehicleTrim.hasBoot %}Yes{% else %}No{% endif %}</td>
+                <td>{% if vehicleTrim.isHgv %}Yes{% else %}No{% endif %}</td>
+                <td>{% if vehicleTrim.hasSunroof %}Yes{% else %}No{% endif %}</td>
+                <td>{% if vehicleTrim.hasGps %}Yes{% else %}No{% endif %}</td>
+                <td>{{ vehicleTrim.totalWheels }}</td>
+                <td>{{ vehicleTrim.engineCapacity }}</td>
+                <td>{{ vehicleTrim.totalDoors }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vehicletrim_show', { 'id': vehicleTrim.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('vehicletrim_edit', { 'id': vehicleTrim.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vehicletrim_new') }}">Create a new vehicleTrim</a>
+        </li>
+    </ul>
+{% endblock %}

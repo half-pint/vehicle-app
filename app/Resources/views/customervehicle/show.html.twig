@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customervehicle</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ customerVehicle.id }}</td>
+            </tr>
+            <tr>
+                <th>Customerid</th>
+                <td>{{ customerVehicle.customerId }}</td>
+            </tr>
+            <tr>
+                <th>Vehicletrim</th>
+                <td>{{ customerVehicle.vehicleTrim }}</td>
+            </tr>
+            <tr>
+                <th>Vehicleusage</th>
+                <td>{{ customerVehicle.vehicleUsage }}</td>
+            </tr>
+            <tr>
+                <th>Licenseplate</th>
+                <td>{{ customerVehicle.licensePlate }}</td>
+            </tr>
+            <tr>
+                <th>Hastrailer</th>
+                <td>{% if customerVehicle.hasTrailer %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Vehiclecolour</th>
+                <td>{{ customerVehicle.vehicleColour }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('customervehicle_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('customervehicle_edit', { 'id': customerVehicle.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

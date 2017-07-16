@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customervehicles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customerid</th>
+                <th>Vehicletrim</th>
+                <th>Vehicleusage</th>
+                <th>Licenseplate</th>
+                <th>Hastrailer</th>
+                <th>Vehiclecolour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customerVehicle in customerVehicles %}
+            <tr>
+                <td><a href="{{ path('customervehicle_show', { 'id': customerVehicle.id }) }}">{{ customerVehicle.id }}</a></td>
+                <td>{{ customerVehicle.customerId }}</td>
+                <td>{{ customerVehicle.vehicleTrim }}</td>
+                <td>{{ customerVehicle.vehicleUsage }}</td>
+                <td>{{ customerVehicle.licensePlate }}</td>
+                <td>{% if customerVehicle.hasTrailer %}Yes{% else %}No{% endif %}</td>
+                <td>{{ customerVehicle.vehicleColour }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('customervehicle_show', { 'id': customerVehicle.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('customervehicle_edit', { 'id': customerVehicle.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('customervehicle_new') }}">Create a new customerVehicle</a>
+        </li>
+    </ul>
+{% endblock %}
